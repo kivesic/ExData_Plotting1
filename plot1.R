@@ -9,10 +9,6 @@ data$Date <- as.Date(data$Date, format="%d/%m/%Y" )
 # extract only the required dates
 subset <- data[data$Date >= as.Date("2007-02-01") & data$Date <= as.Date("2007-02-02") , ]
 
-# calculate datetime form plots
-dateTime <- as.POSIXlt(paste(subset$Date, subset$Time, sep=" "))
-
-
 ### Creating the 1st plot ###
 
 # Load the PNG device

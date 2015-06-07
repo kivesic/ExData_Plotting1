@@ -10,7 +10,7 @@ data$Date <- as.Date(data$Date, format="%d/%m/%Y" )
 subset <- data[data$Date >= as.Date("2007-02-01") & data$Date <= as.Date("2007-02-02") , ]
 
 # calculate datetime form plots
-dateTime <- as.POSIXlt(paste(subset$Date, subset$Time, sep=" "))
+datetime <- as.POSIXlt(paste(subset$Date, subset$Time, sep=" "))
 
 ### Creating the 4th plot ###
 
@@ -32,20 +32,20 @@ Sys.setlocale(category="LC_TIME", locale = "English")
 par(mfrow=c(2,2))
 
 # 1st plot
-plot(dateTime, subset$Global_active_power, type="l", ylab="Global Active Power (kilowatts)", xlab="")
+plot(datetime, subset$Global_active_power, type="l", ylab="Global Active Power", xlab="")
 
 # 2nd plot
-plot(dateTime, subset$Voltage, type="l", ylab="Voltage")
+plot(datetime, subset$Voltage, type="l", ylab="Voltage")
 
 # 3rd plot
-plot(dateTime, subset$Sub_metering_1, ylab="Energy sub metering", xlab="", type="l")
-lines(x=dateTime, y=subset$Sub_metering_2, col="red")
-lines(x=dateTime, y=subset$Sub_metering_3, col="blue")
+plot(datetime, subset$Sub_metering_1, ylab="Energy sub metering", xlab="", type="l")
+lines(x=datetime, y=subset$Sub_metering_2, col="red")
+lines(x=datetime, y=subset$Sub_metering_3, col="blue")
 legend("topright", legend=c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"), col=c("black", "red", "blue"), 
        lty="solid", cex=0.95, bty="n")
 
 # 4th plot
-plot(dateTime, subset$Global_reactive_power, type="l", ylab="Global_reactive_power")
+plot(datetime, subset$Global_reactive_power, type="l", ylab="Global_reactive_power")
 
 # Close the driver
 dev.off()

@@ -10,7 +10,7 @@ data$Date <- as.Date(data$Date, format="%d/%m/%Y" )
 subset <- data[data$Date >= as.Date("2007-02-01") & data$Date <= as.Date("2007-02-02") , ]
 
 # calculate datetime form plots
-dateTime <- as.POSIXlt(paste(subset$Date, subset$Time, sep=" "))
+datetime <- as.POSIXlt(paste(subset$Date, subset$Time, sep=" "))
 
 ### Creating the 2nd plot ###
 
@@ -27,7 +27,7 @@ timeLocale <- Sys.getlocale(category="LC_TIME")
 Sys.setlocale(category="LC_TIME", locale = "English")
 
 # Draw a plot
-plot(dateTime, subset$Global_active_power, type="l", ylab="Global Active Power (kilowatts)", xlab="")
+plot(datetime, subset$Global_active_power, type="l", ylab="Global Active Power (kilowatts)", xlab="")
 
 # Close the driver
 dev.off()

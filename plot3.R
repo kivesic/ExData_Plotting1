@@ -10,7 +10,7 @@ data$Date <- as.Date(data$Date, format="%d/%m/%Y" )
 subset <- data[data$Date >= as.Date("2007-02-01") & data$Date <= as.Date("2007-02-02") , ]
 
 # calculate datetime form plots
-dateTime <- as.POSIXlt(paste(subset$Date, subset$Time, sep=" "))
+datetime <- as.POSIXlt(paste(subset$Date, subset$Time, sep=" "))
 
 ### Creating the 3rd plot ###
 
@@ -27,9 +27,9 @@ timeLocale <- Sys.getlocale(category="LC_TIME")
 Sys.setlocale(category="LC_TIME", locale = "English")
 
 # Draw plots
-plot(dateTime, subset$Sub_metering_1, ylab="Energy sub metering", xlab="", type="l")
-lines(x=dateTime, y=subset$Sub_metering_2, col="red")
-lines(x=dateTime, y=subset$Sub_metering_3, col="blue")
+plot(datetime, subset$Sub_metering_1, ylab="Energy sub metering", xlab="", type="l")
+lines(x=datetime, y=subset$Sub_metering_2, col="red")
+lines(x=datetime, y=subset$Sub_metering_3, col="blue")
 
 legend("topright", legend=c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"), col=c("black", "red", "blue"), lty="solid")
   
